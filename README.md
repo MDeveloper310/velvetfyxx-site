@@ -22,7 +22,7 @@ assets/favicon.svg, favicon-32.png, apple-touch-icon.png
 | Item | Where |
 |---|---|
 | **Formspree endpoint** — create a free form at formspree.io, replace `YOUR_FORM_ID` | `contact.html` (form `action`). Until swapped, submit opens a pre-filled email to mariamarronbusiness@gmail.com (mailto fallback). |
-| **Site URL / domain** — `https://mdeveloper310.github.io/velvetfyxx-site` | `<link rel=canonical>`, `og:url`, `og:image` in every page (find & replace). |
+| **Site URL / domain** — `https://mariamarron.com` | `<link rel=canonical>`, `og:url`, `og:image` in every page (find & replace). |
 | **404 base path** — 404.html uses absolute `/velvetfyxx-site/...` links so it works at any depth | `404.html` — change to `/` if you use a custom domain or a `username.github.io` repo. |
 | **Real photos** — current images are the brand-kit/Dropbox media-kit finals (branded promo graphics). Add clean, unbranded stills per brand. | `assets/img/<name>-600.webp` + `-1200.webp` (keep names, or edit `work.html`). |
 | **Placeholder case study** ("The next house · Forthcoming 2027" monogram tile, marked `<!-- PLACEHOLDER -->`) | `work.html` |
