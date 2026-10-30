@@ -416,3 +416,4 @@ body::after{content:"";position:fixed;inset:0;z-index:69;pointer-events:none;bac
 .fx .flight .fl-first h2{text-transform:uppercase;letter-spacing:.02em;font-size:clamp(3.2rem,7.6vw,8.4rem)}
 .fx .flight .fl-scene h2 .w:nth-child(even){font-style:italic;color:var(--champagne)}
 @media(max-width:899px){.fx .flight .fl-scene h2{font-size:clamp(2.8rem,14vw,4.6rem)}.fx .flight .fl-first h2{font-size:clamp(2.6rem,13.5vw,4.4rem)}}
+@media(min-width:900px){.fl-scene.r{left:auto;right:0;text-align:right;margin-left:auto}.fl-scene.r .fl-sub{margin-left:auto}.fl-scene.r .fl-ctas{justify-content:flex-end}}

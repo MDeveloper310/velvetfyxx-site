@@ -53,7 +53,7 @@ async function init(){
     u.uPlA.value=W/H;
     const m=new THREE.Mesh(new THREE.PlaneGeometry(W,H,mobile?16:32,mobile?16:32),new THREE.ShaderMaterial({uniforms:u,vertexShader:vs,fragmentShader:fs,transparent:true,depthWrite:false}));
     const side=mobile?0:(i===0?1.6:(i%2?1.9:-1.9));
-    m.position.set(side,0,-i*D); scene.add(m);
+    m.position.set(side,0,-i*D); scene.add(m); if(side<0)el.classList.add('r');
     const src=el.dataset.img.replace('{w}',mobile?'600':'1200');
     loader.load(src,t=>{t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=4;u.uTex.value=t;u.uImgA.value=t.image.width/t.image.height});
     /* gold hairline frame floating slightly behind = parallax layer */
