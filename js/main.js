@@ -58,4 +58,21 @@
       }).catch(mailto);
     });
   }
+  // count-up for real figures already on the page ([data-count])
+  var cs=d.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window&&!RM){var io3=new IntersectionObserver(function(en){en.forEach(function(x){if(!x.isIntersecting)return;io3.unobserve(x.target);var el=x.target,to=+el.dataset.count,pad=(el.dataset.pad|0),t0=0;
+    function f(t){t0=t0||t;var p=Math.min(1,(t-t0)/1400),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=String(v).padStart(pad,'0');if(p<1)requestAnimationFrame(f);}
+    el.textContent=String(0).padStart(pad,'0');requestAnimationFrame(f);});},{threshold:.6});cs.forEach(function(c){io3.observe(c);});}
+  // hover tilt on brand cards (fine pointers only, rAF-throttled, transform only)
+  if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches){d.querySelectorAll('.card,.pillar').forEach(function(c){var raf=0,ex,ey;
+    c.addEventListener('pointerenter',function(){c.classList.add('tilt');});
+    c.addEventListener('pointermove',function(e){ex=e.clientX;ey=e.clientY;if(raf)return;raf=requestAnimationFrame(function(){raf=0;var r=c.getBoundingClientRect(),px=(ex-r.left)/r.width-.5,py=(ey-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateX('+(-py*6).toFixed(2)+'deg) rotateY('+(px*7).toFixed(2)+'deg)';});});
+    c.addEventListener('pointerleave',function(){c.style.transform='';});});}
+  // 3D objects: lazy ES module after first paint + idle, never blocks load
+  var weak=innerWidth<700&&((navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2));
+  if(!weak&&!/[?&]no3d/.test(location.search)&&'IntersectionObserver' in window){var go=function(){var s=d.createElement('script');s.type='module';s.src=(d.querySelector('script[src*="main.js"]').src.replace(/main\.js.*$/,'scene3d.js?v=8'));d.body.appendChild(s);};
+    var done=0;go=(function(g){return function(){if(!done){done=1;g();}};})(go);
+    // touch devices: fetch three.js only once the visitor starts interacting, keeping first load light
+    var later=matchMedia('(pointer:coarse)').matches?function(){['scroll','touchstart','pointerdown'].forEach(function(t){addEventListener(t,go,{once:true,passive:true});});}:function(){('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,600);};
+    if(matchMedia('(pointer:coarse)').matches)later();else if(d.readyState==='complete')setTimeout(later,300);else addEventListener('load',function(){setTimeout(later,300);});}
 })();

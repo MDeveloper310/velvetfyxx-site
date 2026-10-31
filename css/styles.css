@@ -483,3 +483,11 @@ h2 em{animation:none;background-position:30% 0;transition:background-position 2.
 .hero h1.gold .ln>span{background:var(--gold-grad);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:lineUp 1.8s var(--ease) .3s forwards,shimmer 3.2s var(--ease-io) 1.6s 2 both}
 .hero h1.gold .ln+.ln>span{animation-delay:.42s,1.75s}
 @media(prefers-reduced-motion:reduce){.hero h1.gold .ln>span{transform:none;background-position:50% 0}}
+
+/* floating 3D objects (js/scene3d.js) */
+.fx3d{position:fixed;inset:0;width:100vw;height:100vh;z-index:40;pointer-events:none;opacity:0;transition:opacity 1.4s var(--ease)}
+.fx3d.on{opacity:1}
+.tilt{transition:transform .6s var(--ease);will-change:transform;transform-style:preserve-3d}
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
