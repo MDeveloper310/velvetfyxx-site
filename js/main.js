@@ -89,7 +89,6 @@
     addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;if(!on){on=1;requestAnimationFrame(mv);}},{passive:true});
     d.addEventListener('pointerover',function(e){dot.classList.toggle('big',!!e.target.closest('a,button,select,input,textarea'));});}
 })();
-document.querySelectorAll('.exh .placard').forEach(p=>p.addEventListener('click',()=>p.parentElement.querySelector('.exh__frame').click()));
 /* v6: hero parallax + storefront glide */
 (function(){var d=document,RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
  var hm=d.getElementById('heroMedia'),fg=d.getElementById('heroFg');
@@ -112,3 +111,7 @@ document.querySelectorAll('.exh .placard').forEach(p=>p.addEventListener('click'
  addEventListener('pointerup',function(){if(!down)return;down=false;if(!t.classList.contains('is-drag'))return;var vel=-v*16;(function glide(){if(Math.abs(vel)>.5&&!RM){t.scrollLeft+=vel;vel*=.92;requestAnimationFrame(glide);}else{t.classList.remove('is-drag');}})();});
  t.addEventListener('click',function(e){if(moved>6){e.preventDefault();e.stopPropagation();moved=0;}},true);
 })();
+/* v7 editorial reveals */
+(function(){var d=document,els=d.querySelectorAll('.rv');if(!els.length||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ d.documentElement.classList.add('rv-on');var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+ els.forEach(function(el){io.observe(el);});})();
