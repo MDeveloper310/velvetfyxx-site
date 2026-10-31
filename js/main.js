@@ -71,7 +71,7 @@
   // homepage fly-through: desktop loads when idle; phones on first touch/scroll; never for reduced motion or weak devices
   var fl=d.getElementById('fly');
   var weak=(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2);
-  if(fl&&!RM&&!weak&&!/[?&]static/.test(location.search)&&'IntersectionObserver' in window){var gone=0,go=function(){if(gone)return;gone=1;var s=d.createElement('script');s.defer=true;s.src=d.querySelector('script[src*="main.js"]').src.replace(/main\.js.*$/,'museum.js?v=13');d.body.appendChild(s);};
+  if(fl&&!RM&&!weak&&!/[?&]static/.test(location.search)&&'IntersectionObserver' in window){var gone=0,go=function(){if(gone)return;gone=1;var s=d.createElement('script');s.defer=true;s.src=d.querySelector('script[src*="main.js"]').src.replace(/main\.js.*$/,'walk.js?v=14');d.body.appendChild(s);};
     if(matchMedia('(pointer:coarse)').matches){['scroll','touchstart','pointerdown'].forEach(function(t){addEventListener(t,go,{once:true,passive:true});});}
     else{var idle=function(){('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2000}):setTimeout(go,500);};if(d.readyState==='complete')setTimeout(idle,200);else addEventListener('load',function(){setTimeout(idle,200);});}}
   // refined dot cursor (desktop only)
