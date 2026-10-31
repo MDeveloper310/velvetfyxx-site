@@ -582,5 +582,9 @@ h2 em{animation:none;background:none;-webkit-text-fill-color:var(--champagne);co
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
 /* hero legibility: black gradient under the name, face left clear */
-.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.55) 0%,rgba(5,4,5,0) 22%,rgba(5,4,5,.2) 45%,rgba(5,4,5,.78) 72%,#050405 100%),linear-gradient(90deg,rgba(5,4,5,.7) 0%,rgba(5,4,5,.25) 45%,transparent 70%)}
-@media(max-width:899px){.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.5) 0%,rgba(5,4,5,0) 16%,rgba(5,4,5,.05) 36%,rgba(5,4,5,.72) 52%,rgba(5,4,5,.9) 68%,#050405 100%)}}
+.hero.sweep::after{display:block;content:"";position:absolute;inset:0;top:0;bottom:0;width:auto;z-index:-1;opacity:1;transform:none;animation:none;pointer-events:none}
+.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.55) 0%,rgba(5,4,5,0) 22%,rgba(5,4,5,0) 55%,rgba(5,4,5,.6) 85%,#050405 100%),linear-gradient(90deg,rgba(5,4,5,.75) 0%,rgba(5,4,5,.3) 42%,transparent 62%)}
+@media(max-width:899px){.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.5) 0%,rgba(5,4,5,0) 16%,rgba(5,4,5,.05) 34%,rgba(5,4,5,.3) 46%,rgba(5,4,5,.7) 62%,rgba(5,4,5,.9) 76%,#050405 100%)}}
+.proof__h{text-align:center;margin:0 0 var(--s3);font-weight:500}
+.cta .btn+.btn{margin-left:var(--s2)}
+@media(max-width:600px){.cta .btn+.btn{margin:var(--s2) 0 0}}
