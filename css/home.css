@@ -134,3 +134,16 @@
 @keyframes riseT{from{transform:translateY(18px)}to{transform:none}}
 .mh__in>*,.mh__in>.mh__name{animation:riseT 1.2s cubic-bezier(.2,.7,.2,1) both}
 @media (prefers-reduced-motion:reduce){.mh__in>*,.mh__in>.mh__name{animation:none}}
+
+@media(max-width:899px){
+ .mh{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end}
+ .mh__media{left:0;right:0;width:100%;inset:0}
+ .mh__media img{object-position:72% 30%}
+ .mh__media::after{background:linear-gradient(180deg,rgba(5,5,5,.55) 0,rgba(5,5,5,0) 16%,rgba(5,5,5,0) 44%,rgba(5,5,5,.82) 62%,#050505 80%)!important}
+ .mh__in{position:relative;margin-top:auto;padding-top:0;padding-bottom:max(36px,env(safe-area-inset-bottom))}
+ .mh__name{font-size:clamp(44px,13vw,64px)}
+ .mh__tag{font-size:17px;margin-bottom:22px}
+ .mh__rule{margin:16px 0}
+ .lx-about__img img{aspect-ratio:auto;object-fit:contain}
+}
+@media(max-width:899px){.mh__media{bottom:auto;height:68%}.mh__media::after{background:linear-gradient(180deg,rgba(5,5,5,.5) 0,rgba(5,5,5,0) 18%,rgba(5,5,5,0) 62%,rgba(5,5,5,.85) 86%,#050505 100%)!important}}
