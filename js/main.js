@@ -68,4 +68,15 @@
     c.addEventListener('pointerenter',function(){c.classList.add('tilt');});
     c.addEventListener('pointermove',function(e){ex=e.clientX;ey=e.clientY;if(raf)return;raf=requestAnimationFrame(function(){raf=0;var r=c.getBoundingClientRect(),px=(ex-r.left)/r.width-.5,py=(ey-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateX('+(-py*3).toFixed(2)+'deg) rotateY('+(px*3.5).toFixed(2)+'deg)';});});
     c.addEventListener('pointerleave',function(){c.style.transform='';});});}
+  // homepage fly-through: desktop loads when idle; phones on first touch/scroll; never for reduced motion or weak devices
+  var fl=d.getElementById('fly');
+  var weak=(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2);
+  if(fl&&!RM&&!weak&&!/[?&]static/.test(location.search)&&'IntersectionObserver' in window){var gone=0,go=function(){if(gone)return;gone=1;var s=d.createElement('script');s.type='module';s.src=d.querySelector('script[src*="main.js"]').src.replace(/main\.js.*$/,'flythrough.js?v=12');d.body.appendChild(s);};
+    if(matchMedia('(pointer:coarse)').matches){['scroll','touchstart','pointerdown'].forEach(function(t){addEventListener(t,go,{once:true,passive:true});});}
+    else{var idle=function(){('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2000}):setTimeout(go,500);};if(d.readyState==='complete')setTimeout(idle,200);else addEventListener('load',function(){setTimeout(idle,200);});}}
+  // refined dot cursor (desktop only)
+  if(!RM&&matchMedia('(hover:hover) and (pointer:fine)').matches&&d.body.classList.contains('home')){var dot=d.createElement('div');dot.className='dot';dot.setAttribute('aria-hidden','true');d.body.appendChild(dot);root.classList.add('has-dot');
+    var tx=-50,ty=-50,cx=-50,cy=-50,on=0;function mv(){cx+=(tx-cx)*.35;cy+=(ty-cy)*.35;dot.style.transform='translate3d('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px,0)';if(Math.abs(tx-cx)+Math.abs(ty-cy)>.3)requestAnimationFrame(mv);else on=0;}
+    addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;if(!on){on=1;requestAnimationFrame(mv);}},{passive:true});
+    d.addEventListener('pointerover',function(e){dot.classList.toggle('big',!!e.target.closest('a,button,select,input,textarea'));});}
 })();
