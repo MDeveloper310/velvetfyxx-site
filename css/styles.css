@@ -84,7 +84,7 @@ p{margin:0 0 1.1em;color:#d9cdbb;max-width:62ch}
 .hero .pos em{color:var(--champagne)}
 .chips{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:0 0 2.2rem;padding:0;list-style:none}
 .chips li{font-family:var(--f-tag);font-style:italic;color:var(--champagne);font-size:1.05rem}
-.chips li+li::before{content:"✦";font-style:normal;font-size:.6rem;color:var(--gold);margin-right:1rem;vertical-align:middle}
+.chips li+li::before{content:"·";font-style:normal;font-size:1rem;color:var(--gold);margin-right:1rem;vertical-align:middle}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:1rem}
 .scrollcue{position:absolute;right:var(--gutter);bottom:2rem;writing-mode:vertical-rl;display:none}
 @media(min-width:900px){.scrollcue{display:block}}
@@ -581,3 +581,6 @@ h2 em{animation:none;background:none;-webkit-text-fill-color:var(--champagne);co
 @view-transition{navigation:auto}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+/* hero legibility: black gradient under the name, face left clear */
+.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.55) 0%,rgba(5,4,5,0) 22%,rgba(5,4,5,.2) 45%,rgba(5,4,5,.78) 72%,#050405 100%),linear-gradient(90deg,rgba(5,4,5,.7) 0%,rgba(5,4,5,.25) 45%,transparent 70%)}
+@media(max-width:899px){.hero::after{background:linear-gradient(180deg,rgba(5,4,5,.5) 0%,rgba(5,4,5,0) 16%,rgba(5,4,5,.05) 36%,rgba(5,4,5,.72) 52%,rgba(5,4,5,.9) 68%,#050405 100%)}}
