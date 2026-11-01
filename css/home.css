@@ -147,3 +147,27 @@
  .lx-about__img img{aspect-ratio:auto;object-fit:contain}
 }
 @media(max-width:899px){.mh__media{bottom:auto;height:68%}.mh__media::after{background:linear-gradient(180deg,rgba(5,5,5,.5) 0,rgba(5,5,5,0) 18%,rgba(5,5,5,0) 62%,rgba(5,5,5,.85) 86%,#050505 100%)!important}}
+
+/* v8: handle label, gifting & PR, partner extras */
+.lx-handle{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .6s}
+.lx-handle:hover,.lx-handle:focus-visible{border-bottom-color:var(--lx-gold)}
+.lx-gift{padding:clamp(100px,12vw,180px) 0;border-top:1px solid rgba(201,168,106,.14)}
+.lx-gift__in{max-width:1240px}
+.lx-gift__head{max-width:760px}
+.lx-gift h2{font-size:clamp(2.4rem,4.4vw,4rem);margin:0 0 30px}
+.lx-gift .lx-lead{margin:0 0 22px;max-width:40ch}
+.lx-gift__copy{font-family:Inter,system-ui,sans-serif;font-size:.95rem;line-height:1.85;color:var(--lx-mute);max-width:60ch;margin:0 0 clamp(60px,7vw,100px)}
+.lx-gift__list h3{font-family:"Bodoni Moda",Didot,serif;font-weight:400;font-size:1.25rem;line-height:1.3;margin:0 0 16px;color:var(--lx-ivory)}
+.lx-gift__list li p{font-family:Inter,system-ui,sans-serif;font-size:.88rem;line-height:1.8;color:var(--lx-mute);margin:0}
+.lx-btn--quiet{border-color:var(--lx-line)}
+.lx-btn--quiet:hover,.lx-btn--quiet:focus-visible{border-color:var(--lx-gold)}
+.lx-partner__note{font-family:Inter,system-ui,sans-serif;font-size:.85rem;line-height:1.8;color:var(--lx-mute);max-width:52ch;margin:44px auto 0}
+.lx-partner__note a{color:var(--lx-ivory);overflow-wrap:anywhere}
+.lx-social{list-style:none;margin:36px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px}
+.lx-social a{font:500 .64rem/1 Inter,system-ui,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--lx-gold);text-decoration:none;padding:10px 0;display:inline-block}
+.lx-social a:hover,.lx-social a:focus-visible{color:var(--lx-gold-2)}
+@media(max-width:899px){
+ .lx-gift__list{grid-template-columns:1fr;gap:44px}
+ .lx-gift .mh__ctas .lx-btn,.lx-partner .mh__ctas .lx-btn{padding:0 24px;letter-spacing:.24em}
+}
+@media(max-width:420px){.lx-gift .mh__ctas .lx-btn,.lx-partner .mh__ctas .lx-btn{flex:1 1 100%}}

@@ -9,6 +9,7 @@ js/main.js         # sticky nav, mobile menu, reveal-on-scroll, work filters, fo
 assets/img/        # optimized .webp (600w + 1200w), og.jpg (1200×628), hero jpg fallback
 assets/video/      # hilton-stay.mp4 (muted 12s loop, 540p, ~1.3 MB)
 assets/favicon.svg, favicon-32.png, apple-touch-icon.png
+assets/Maria-Marron-Media-Kit.pdf   # downloadable media kit
 .nojekyll
 ```
 
@@ -23,9 +24,9 @@ assets/favicon.svg, favicon-32.png, apple-touch-icon.png
 |---|---|
 | **Formspree endpoint** — create a free form at formspree.io, replace `YOUR_FORM_ID` | `contact.html` (form `action`). Until swapped, submit opens a pre-filled email to mariamarronbusiness@gmail.com (mailto fallback). |
 | **Site URL / domain** — `https://mariamarron.com` | `<link rel=canonical>`, `og:url`, `og:image` in every page (find & replace). |
-| **404 base path** — 404.html uses absolute `/velvetfyxx-site/...` links so it works at any depth | `404.html` — change to `/` if you use a custom domain or a `username.github.io` repo. |
+| **404 paths** — 404.html uses root-absolute `/...` links (custom domain mariamarron.com) | `404.html` |
+| **Media kit PDF** — linked from the homepage, contact page and every footer | `assets/Maria-Marron-Media-Kit.pdf` (replace the file, keep the name) |
 | **Real photos** — current images are the brand-kit/Dropbox media-kit finals (branded promo graphics). Add clean, unbranded stills per brand. | `assets/img/<name>-600.webp` + `-1200.webp` (keep names, or edit `work.html`). |
-| **Placeholder case study** ("The next house · Forthcoming 2027" monogram tile, marked `<!-- PLACEHOLDER -->`) | `work.html` |
 | Social links (verify handles) | footer of every page + `contact.html` + JSON-LD |
 
 To regenerate images: `cwebp -q 78 -resize 1200 0 in.jpg -o name-1200.webp` (and 600).
@@ -37,6 +38,6 @@ To regenerate images: `cwebp -q 78 -resize 1200 0 in.jpg -o name-1200.webp` (and
 - No testimonials / client quotes.
 - No brand logos (brands are listed typographically).
 - No unbranded per-brand photography; kit images carry the restaurants' own promo text.
-- No rates sheet ("rates on request"), no usage/licensing terms, no turnaround times.
+- No rates sheet (the site deliberately mentions no rates or prices), no usage/licensing terms, no turnaround times.
 - No domain, no Formspree account, no headshot/portrait for press, no showreel (a Hilton reel clip from Dropbox is used).
 - "Frymazing" — approved by Maria to keep.
