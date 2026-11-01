@@ -38,6 +38,6 @@ To regenerate images: `cwebp -q 78 -resize 1200 0 in.jpg -o name-1200.webp` (and
 - No testimonials / client quotes.
 - No brand logos (brands are listed typographically).
 - No unbranded per-brand photography; kit images carry the restaurants' own promo text.
-- No rates sheet ("rates on request"), no usage/licensing terms, no turnaround times.
+- No rates sheet (the site deliberately mentions no rates or prices), no usage/licensing terms, no turnaround times.
 - No domain, no Formspree account, no headshot/portrait for press, no showreel (a Hilton reel clip from Dropbox is used).
 - "Frymazing" — approved by Maria to keep.
