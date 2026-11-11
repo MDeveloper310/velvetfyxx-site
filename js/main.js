@@ -35,27 +35,32 @@
     var f=b.dataset.filter;fb.forEach(function(x){x.setAttribute('aria-pressed',x===b);});
     d.querySelectorAll('.case').forEach(function(c){c.hidden=!(f==='all'||c.dataset.cat.indexOf(f)>-1);});
   });});
-  // inquiry form: preselect from ?type=, AJAX to Formspree, mailto fallback
+  // inquiry form: preselect from ?type=, AJAX to FormSubmit (free, no account), mailto fallback
   var form=d.querySelector('#inquiry');
   if(form){
-    var q=new URLSearchParams(location.search).get('type'),sel=form.querySelector('select');
+    var qs=new URLSearchParams(location.search),q=qs.get('type'),sel=form.querySelector('select');
     if(q&&sel){[].forEach.call(sel.options,function(o){if(o.value===q)sel.value=q;});}
-    var status=form.querySelector('.form-status');
+    var status=form.querySelector('.form-status'),btn=form.querySelector('button[type=submit]');
+    if(qs.get('sent')==='1')status.textContent='Thank you — your inquiry is in. Maria will be in touch personally.';
     form.addEventListener('submit',function(e){
       if(!form.checkValidity())return;
       e.preventDefault();
       var data=new FormData(form);
+      if(data.get('_honey'))return; // bot
       function mailto(){
-        var body='Name: '+data.get('name')+'\nBrand: '+data.get('brand')+'\nEmail: '+data.get('email')+'\nProject: '+data.get('project_type')+'\n\n'+data.get('message');
-        location.href='mailto:mariamarronbusiness@gmail.com?subject='+encodeURIComponent('Collab inquiry — '+data.get('brand'))+'&body='+encodeURIComponent(body);
-        status.textContent='Opening your email app… or write directly to mariamarronbusiness@gmail.com';
+        var body='Name: '+data.get('name')+'\nBrand: '+data.get('brand')+'\nEmail: '+data.get('email')+(data.get('project_type')?'\nProject: '+data.get('project_type'):'')+'\n\n'+data.get('message');
+        status.textContent='Couldn’t send from the site — opening your email app instead. Or write to mariamarronbusiness@gmail.com';
+        location.href='mailto:mariamarronbusiness@gmail.com?subject='+encodeURIComponent('Brand inquiry — '+data.get('brand'))+'&body='+encodeURIComponent(body);
       }
-      if(form.action.indexOf('YOUR_FORM_ID')>-1){mailto();return;}
-      status.textContent='Sending…';
-      fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}}).then(function(r){
-        if(r.ok){form.reset();status.textContent='Thank you — your inquiry is in. Maria will be in touch personally.';}
+      var url=form.dataset.ajax;
+      if(!url||!window.fetch){mailto();return;}
+      data.delete('_next');
+      status.textContent='Sending…';if(btn)btn.disabled=true;
+      fetch(url,{method:'POST',body:data,headers:{Accept:'application/json'}}).then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});}).then(function(res){
+        if(btn)btn.disabled=false;
+        if(res.ok&&String(res.j.success)!=='false'){form.reset();status.textContent='Thank you — your inquiry is in. Maria will be in touch personally.';if(window.mmTrack)window.mmTrack('contact-form-sent');}
         else mailto();
-      }).catch(mailto);
+      }).catch(function(){if(btn)btn.disabled=false;mailto();});
     });
   }
   // count-up for real figures already on the page ([data-count])

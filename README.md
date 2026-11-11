@@ -3,7 +3,7 @@
 Static, dependency-free portfolio + living media kit. Pure HTML / CSS / vanilla JS. No build step.
 
 ```
-index.html  about.html  work.html  services.html  contact.html  404.html
+index.html  about.html  work.html  brand-work.html  services.html  contact.html  404.html
 css/styles.css     # all styling; brand colors as CSS variables in :root
 js/main.js         # sticky nav, mobile menu, reveal-on-scroll, work filters, form, footer year
 assets/img/        # optimized .webp (600w + 1200w), og.jpg (1200×628), hero jpg fallback
@@ -22,7 +22,8 @@ assets/Maria-Marron-Media-Kit.pdf   # downloadable media kit
 ## What to swap
 | Item | Where |
 |---|---|
-| **Formspree endpoint** — create a free form at formspree.io, replace `YOUR_FORM_ID` | `contact.html` (form `action`). Until swapped, submit opens a pre-filled email to mariamarronbusiness@gmail.com (mailto fallback). |
+| **Contact form** — FormSubmit.co (free, no account) posts to mariamarronbusiness@gmail.com via `https://formsubmit.co/ajax/<email>`; first submission triggers a one-time activation email to that inbox. If sending fails, the form falls back to a pre-filled mailto. | `contact.html` (`data-ajax`), `js/main.js` |
+| **Analytics** — GoatCounter (cookie-free). Off until a code is set: create a free account at goatcounter.com, then set `GOATCOUNTER_CODE` | `js/analytics.js` |
 | **Site URL / domain** — `https://mariamarron.com` | `<link rel=canonical>`, `og:url`, `og:image` in every page (find & replace). |
 | **404 paths** — 404.html uses root-absolute `/...` links (custom domain mariamarron.com) | `404.html` |
 | **Media kit PDF** — linked from the homepage, contact page and every footer | `assets/Maria-Marron-Media-Kit.pdf` (replace the file, keep the name) |
