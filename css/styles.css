@@ -788,3 +788,8 @@ dialog.exd[open]{animation:exdIn .45s var(--ease)}
 .bw-ugc>*{min-width:0}.bw-ugc__item picture{display:block}
 .bw-brand__media--two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .bw-ugc__item img,.bw-brand__media img,.bw-brand__media video{height:auto}
+
+/* media-kit nav: seven items */
+@media(min-width:900px) and (max-width:1199px){
+  .nav__links{gap:1.15rem}
+}
